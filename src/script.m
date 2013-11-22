@@ -1,16 +1,19 @@
 close all;
 clear;
 genfich;
+genfichOpti;
 Xtemp = DATAIRIS;
 Ytemp = LABELIRIS;
 X = [1 1 0 0;
      0 1 0 1];
 Y = [1 -1 -1 1];
-turn = 5;
+turn = 10;
 func = @RBFKernel;
 arg = 10;
 c = 1;
 for h=1:turn
+    c = power(10,h-1);
+    figure('name',strcat('c=',num2str(c)),'NumberTitle','off');
     ind = find(LABELIRIS==1 | LABELIRIS==2);
     iris_data_1_2 = zeros(size(DATAIRIS,1),size(ind,2));
     iris_label_1_2 = zeros(1,size(ind,2));
@@ -148,6 +151,5 @@ for h=1:turn
         end
     end
     legend('linearKernel','polynomialKernel 2','polynomialKernel 4','RBFKernel 2');
-    figure;
 end
 %plotKSVMfig(alpha, X, -10, 10, -10, 10, Y,func, arg)
