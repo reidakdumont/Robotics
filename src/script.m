@@ -1,7 +1,6 @@
 close all;
 clear;
 genfich;
-genfichOpti;
 Xtemp = DATAIRIS;
 Ytemp = LABELIRIS;
 X = [1 1 0 0;

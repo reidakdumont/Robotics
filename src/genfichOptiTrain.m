@@ -19,7 +19,7 @@ while line ~= -1
             end
             cnb = cnb+1;
         elseif i == 7
-            C = textscan(str,'%s','delimiter',' ');
+            C = textscan(line,'%s','delimiter',' ');
             LABELOPTDIGIT = zeros(1,str2num(C{1}{3}));
             DATAOPTDIGIT = zeros(32,str2num(C{1}{3}));
         end
