@@ -9,23 +9,18 @@ turn = 10;
 func = @RBFKernel;
 arg = 10;
 c = 1;
+kern = {{@linearKernel,0,'r'};{@polynomialKernel,2,'b'};...
+    {@polynomialKernel,4,'y'};{@RBFKernel,2,'g'};...
+    {@RBFKernel,4,'c'}; {@LaplacianRBFKernel,2,'m'};...
+    {@LaplacianRBFKernel,4,'k'}};
 for h=1:turn
-    c = power(10,h-1);
+    c = power(100,h);
     figure('name',strcat('c=',num2str(c)),'NumberTitle','off');
-    for g=1:4
+    matcell = cell(1,size(kern,1));
+    for g=1:size(kern,1)
         error = 0;
-        if g == 1
-            func = @linearKernel;
-        elseif g ==2
-            func = @polynomialKernel;
-            arg = 2;
-        elseif g == 3
-            func = @polynomialKernel;
-            arg = 4;
-        else
-            func = @RBFKernel;
-            arg = 2;
-        end
+        func = kern{g}{1};
+        arg = kern{g}{2};
         for i=1:size(DATAOPTDIGITTEST,2)
             inter = [min(LABELOPTDIGITTRAIN),max(LABELOPTDIGITTRAIN)];
             while inter(1) ~= inter(2)
@@ -53,19 +48,13 @@ for h=1:turn
             end
         end
         error = error/size(iris_label_test,2)*100;
-        if g == 1
-            bar(g,error, 'r');
-            hold on;
-        elseif g ==2
-            bar(g,error, 'b');
-            hold on;
-        elseif g == 3
-            bar(g,error, 'y');
-            hold on;
+        bar(g,error, kern{g}{3});
+        hold on;
+        if kern{g}{2} > 0
+            matcell{1,g} = strcat(func2str(kern{g}{1}), num2str(kern{g}{2}));
         else
-            bar(g,error, 'g');
-            hold on;
+            matcell{1,g} = func2str(kern{g}{1});
         end
     end
-    legend('linearKernel','polynomialKernel 2','polynomialKernel 4','RBFKernel 2');
+    legend(matcell);
 end
