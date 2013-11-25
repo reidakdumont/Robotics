@@ -10,8 +10,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{xspace}
 \usepackage[francais]{minitoc}
-\usepackage{algorithm}
-\usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage[T1]{fontenc}
 \usepackage[english,frenchb]{babel}
@@ -70,6 +68,7 @@ Afin de menner a bien se benchmark, nous avons utiliser l'implementation fait en
 	\item Création des diagrammes
 \end{itemize}
 
+\begin{description}
 \item[Kernel Linear - ] Une fois la phase test fini, nous avons constaté que les performances de ce kernel se rapprochait d'une classification aléatoire puisque le taux d'erreur  est d'environ 50\%.\\
 
 \item[Kernel Polynomial - ] Pour ce kernel nous avons choisi le second ordre et l'ordre 4 afain d'avoir une assez grande marge pour avoir des résultats assez différents. Mais malgré ce changement d'ordre, nous avons toujours des taux d'erreurs très proches.\\
@@ -79,6 +78,7 @@ Afin de menner a bien se benchmark, nous avons utiliser l'implementation fait en
 \item [Kernel RBF - ] Nous avons donc mis en place un kernel RBF avec les mêmes paramètres que le Laplacian RBF. Les résultats obtenus sont identique aux précent. Néanmoins, nous nous sommes aperçu que le kernel Laplacian RBF donnait de meilleur résultat que le kernel RBF. Nous avons néanmoins aussi remarqué que certaines fois, le kernel RBF avec un gamma égale à 2 avait de moins bon résultat que le kernel RBF avec un gamma égale à 4 mais puisqu'il y avait plus de fois où le taux d'erreur est inférieur lorsque le gamma valait 2, nous nous sommes dit que cela n'était pas significatif.\\
 
 Nous avons ensuite essayé de tester avec des kernels étant des combinaisons de kernel précedemment tester mais les temps étaient beaucoup plus grand et ne donnaient pas vraiment de meilleur résultat et donc nous avons décidé de ne pas les faire apparaître dans notre benchmark.
+\end{description}
 
 \part{Benchmark des kernels choisis}
 
