@@ -6,7 +6,7 @@ Ytemp = LABELIRIS;
 X = [1 1 0 0;
      0 1 0 1];
 Y = [1 -1 -1 1];
-turn = 5;
+turn = 6;
 func = @RBFKernel;
 arg = 10;
 c = 1;
@@ -15,7 +15,11 @@ kern = {{@linearKernel,0,'r'};{@polynomialKernel,2,'b'};...
     {@RBFKernel,4,'c'}; {@LaplacianRBFKernel,2,'m'};...
     {@LaplacianRBFKernel,4,'k'}};
 for h=1:turn
-    c = power(10,h-1);
+    if h ~= turn
+        c = power(10,h-1);
+    else
+        c = inf;
+    end
     figure('name',strcat('c=',num2str(c)),'NumberTitle','off');
     ind = find(LABELIRIS==1 | LABELIRIS==2);
     iris_data_1_2 = zeros(size(DATAIRIS,1),size(ind,2));
