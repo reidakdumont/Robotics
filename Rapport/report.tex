@@ -39,7 +39,7 @@
 Le but de ce rapport est de présenter les résultats de notre étude des kernel de différents SVM dans le but de déterminer le plus efficace de ces kernels. Pour cela, on distinguera deux parties :
 
 \begin{description}
-\item[Les différents kernels] qui permettra de présenter les différents types de kernel choisit et le choix des paramètres pour chacun. ;
+\item[Les différents kernels] qui permettra de présenter les différents types de kernel choisit et le choix des paramètres pour chacun.
 \item[Le benchmark] qui permettra de présenter grâce à des graphiques les résultats de chacune de nos expérimentations sur les kernels précédemment choisis.
 \end{description}
 
@@ -51,47 +51,51 @@ Il nous a fallut tout d'abord choisir une valeur de c correcte pour faire nos te
 
 Une fois le choix de la valeur de c terminé, nous avons tout d'abord essayé le kernel linéaire qui est le kernel de base puisqu'il s'agit d'un simple produit scalaire. Nous nous sommes aperçus que les performances de ce kernel se rapprochait dans la pluspart des cas d'une classification aléatoire puisque le taux d'erreur lors de l'utilisation de ce kernel était d'environ 50{\%}.
 
-Une fois ce premier kernel testé, nous avons décidé de tester le kernel polynomial. Pour faire ces tests, il nous a fallut décider de l'ordre du kernel polynomial que nous allions utilisés pour faire nos tests. Nous avons donc dans un premier temps utilisé un kernel polynomial d'ordre 2 puisque c'est le kernel se situant, pour ainsi dire, au dessus de kernel linéaire puisque le kernel polynomial d'ordre 1 peut s'apparenter à un kernel linéaire. Nous avons ensuite testé un kernel polynomial d'ordre plus haut puisque nous avons choisit d'utiliser un kernel polynomial d'ordre 4. Nous nous sommes aperçu que malgré ce changement d'ordre, nous avions toujours des taux d'erreurs assez proches de ceux avec un kernel polynomial d'ordre 2 et nous avons donc décidé de passer à un autre type de kernel.\\
+Une fois ce premier kernel testé, nous avons décidé de tester le kernel polynomial. Pour faire ces tests, il nous a fallut décider de l'ordre du kernel polynomial que nous allions utilisés pour faire nos tests. Nous avons donc dans un premier temps utilisé un kernel polynomial d'ordre 2 puisque c'est le kernel se situant, pour ainsi dire, au dessus de kernel linéaire puisque le kernel polynomial d'ordre 1 peut s'apparenter à un kernel linéaire. Nous avons ensuite testé un kernel polynomial d'ordre plus haut puisque nous avons choisit d'utiliser un kernel polynomial d'ordre 4. Nous nous sommes aperçu que malgré ce changement d'ordre, nous avions toujours des taux d'erreurs assez proches de ceux avec un kernel polynomial d'ordre 2 et nous avons donc décidé de passer à un autre type de kernel pour essayer d'avoir de meilleurs résultats qu'auparavant.
 
-\`A compléter
+Nous sommes ensuite passé à un kernel LaplacianRBF puisque cela nous a semblé le kernel suivant à tester le plus logique. Nous avons commencé par tester un kernel LaplacianRBF avec comme gamma 2, et la première chose que nous avons remarqué est le temps de calcul qui a énormément augmenté. Nous nous sommes également aperçu que les taux d'erreurs de ce kernel n'évoluait pas énormément en fonction de la valeur de c. Néanmoins, nous nous sommes également aperçu que les taux d'erreurs obtenus étaient bien meilleur que ceux avec un kernel polynomial puisque l'on divisait presque par moitié le taux d'erreur par rapport aux différents kernels polynomiaux. Nous avons ensuite testé avec un gamma plus grand, c'est à dire un gamma égale à 4, de manière à voir si cela avait une influence ou non. Nous nous sommes ainsi rendu compte que les résultats n'étaient pas meilleurs mais justement plus mauvais qu'avec un gamma égale à 2. Nous avons donc décidé de tester avec un dernier type de kernel.
+
+Nous avons donc essayer de mettre en place un kernel RBF avec les mêmes paramètres que nous avions utlisé pour le kernel LaplacianRBF et nous nous sommes rendu compte que nous étions dans le même cas que précedemment c'est à dire que le kernel RBF avec un gamma de 2 donnait de meilleurs résultats que lorsque le gamma valait 4. Néanmoins, nous nous sommes aperçu que le kernel LaplacianRBF donnait de meilleur résultat que le kernel RBF. Nous avons néanmoins aussi remarqué que certaines fois, le kernel RBF avec un gamma égale à 2 avait de moins bon résultat que le kernel RBF avec un gamma égale à 4 mais puisqu'il y avait plus de fois où le taux d'erreur est inférieur lorsque le gamma valait 2, nous nous sommes dit que cela n'était pas significatif.
+
+Nous avons ensuite essayé de tester avec des kernels étant des combinaisons de kernel précedemment tester mais les temps étaient beaucoup plus grand et ne donnaient pas vraiment de meilleur résultat et donc nous avons décidé de ne pas les faire apparaître dans notre benchmark.
 
 \part{Benchmark des kernels choisis}
 
 \fbox{\begin{minipage}{0.9\textwidth}
-\includegraphics[scale=0.5]{image/c1.png}\\
 \begin{center}
+\includegraphics[scale=0.5]{image/c1.png}\\
 \textsc{c = 1}\\
 \end{center}
 \end{minipage}}\\
 
 
 \fbox{\begin{minipage}{0.9\textwidth}
-\includegraphics[scale=0.5]{image/c10.png}\\
 \begin{center}
+\includegraphics[scale=0.5]{image/c10.png}\\
 \textsc{c = 10}\\
 \end{center}
 \end{minipage}}\\
 
 
 \fbox{\begin{minipage}{0.9\textwidth}
-\includegraphics[scale=0.5]{image/c100.png}\\
 \begin{center}
+\includegraphics[scale=0.5]{image/c100.png}\\
 \textsc{c = 100}\\
 \end{center}
 \end{minipage}}\\
 
 
 \fbox{\begin{minipage}{0.9\textwidth}
-\includegraphics[scale=0.5]{image/c1000.png}\\
 \begin{center}
+\includegraphics[scale=0.5]{image/c1000.png}\\
 \textsc{c = 1000}\\
 \end{center}
 \end{minipage}}\\
 
 
 \fbox{\begin{minipage}{0.9\textwidth}
-\includegraphics[scale=0.5]{image/c10000.png}\\
 \begin{center}
+\includegraphics[scale=0.5]{image/c10000.png}\\
 \textsc{c = 10000}\\
 \end{center}
 \end{minipage}}\\
