@@ -1,14 +1,14 @@
 close all;
-clear;
+clear all;
 genfich;
-Xtemp = DATAIRIS;
-Ytemp = LABELIRIS;
-X = [1 1 0 0;
-     0 1 0 1];
-Y = [1 -1 -1 1];
+
+%Calcul du kernel LDA
+out = LDAKernel(DATAIRIS,LABELIRIS, @linearKernel, -1);
+
+%Benchmark de test des kernels
 turn = 6;
 func = @RBFKernel;
-arg = 10;
+arg = 1/0.01;
 c = 1;
 kern = {{@linearKernel,0,'r'};{@polynomialKernel,2,'b'};...
     {@polynomialKernel,4,'y'};{@RBFKernel,2,'g'};...

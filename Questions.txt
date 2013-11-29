@@ -1,0 +1,4 @@
+6. Cela permet de discriminer plus facilement les classes des données de tests renvoyées par notre SVM notamment par le fait de l'aider.
+
+7. Il faut tout d'abord avoir un SVM fonctionnel pour que l'implémentation d'un kernel LDA soit utile mais une fois le SVM fonctionnel, le kernel LDA permet de mieux discriminer avec un kernel équivalent au kernel précédent.
+   Il faut tout de même prendre en compte le temps de mise en place d'une telle méthode ainsi que son temps de calcul.
